@@ -1,0 +1,1 @@
+created data from the bot will also be placed into this folder
