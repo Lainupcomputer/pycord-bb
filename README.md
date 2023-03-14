@@ -9,5 +9,5 @@ LUCS Basic Discord Bot Runtime
 - activate venv ```./venv/bin/activate```
 - move back to created Folder
 - Install requirements: ```pip install -r requirements.txt```
-- set bot token ```python bot.py -token YOUR_TOKEN```
+- set bot token ```cd /helper``` -> ```python set_bot_token.py```
 - start the bot with ```python bot.py```
