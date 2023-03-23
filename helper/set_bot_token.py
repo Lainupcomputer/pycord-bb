@@ -1,7 +1,10 @@
 from ez_storage.ez_storage import Ez_Storage
 from colorama import Fore
 import sys
-from internal.cmd_tools import print_clr
+
+
+def print_clr(content: str, color):
+    print(color + content + Fore.RESET)
 
 
 def set_bot_token(token: str):
