@@ -12,7 +12,7 @@ VERSION = "1.0.0.1"
 
 class system_bb(commands.Cog):
     def __init__(self, bot):
-        print_log(f"Loading music_bot (COG:{VERSION})", Fore.BLUE, logging.INFO)
+        print_log(f"Loading system_bb (COG:{VERSION})", Fore.BLUE, logging.INFO)
         self.bot = bot
         self.storage = Ez_Storage("./storage/data.ezs")
 
