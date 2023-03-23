@@ -10,4 +10,5 @@ LUCS Basic Discord Bot Runtime
 - move back to created Folder
 - Install requirements: ```pip install -r requirements.txt```
 - set bot token ```cd /helper``` -> ```python set_bot_token.py```
+- set bot prefix ```cd /helper``` -> ```python set_bot_prefix.py```
 - start the bot with ```python bot.py```
