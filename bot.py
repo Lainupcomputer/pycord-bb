@@ -40,4 +40,4 @@ if __name__ == "__main__":
     for file in os.listdir("cogs"):
         if file.endswith(".py"):
             bot.load_extension(f"cogs.{file[:-3]}")
-    bot.run(Ez_Storage(BOT_STORAGE).get_storage(mode="o", obj="bot_token", data="token"))
+    bot.run(Ez_Storage(BOT_STORAGE).get_storage(mode="o", obj="bot", data="bot_token"))
