@@ -20,8 +20,3 @@ if __name__ == "__main__":
     print_clr("bot_prefix has been set", Fore.GREEN)
     print_clr("Exiting now ...", Fore.RED)
     sys.exit()
-
-
-
-
-
