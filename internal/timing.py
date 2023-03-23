@@ -16,3 +16,12 @@ def get_now_time(raw: bool = False):
         return time
     else:
         return now
+
+def get_time_sys():
+    '''
+    outputs system writable formatted time
+    :return: system writable formatted time
+    '''
+    now = datetime.now()  # get current date and time
+    return now.strftime("%d-%m-%Y_%H-%M-%S")
+
