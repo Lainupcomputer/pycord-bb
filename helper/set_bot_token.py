@@ -20,8 +20,3 @@ if __name__ == "__main__":
     print_clr("bot_token has been set", Fore.GREEN)
     print_clr("Exiting now ...", Fore.RED)
     sys.exit()
-
-
-
-
-
