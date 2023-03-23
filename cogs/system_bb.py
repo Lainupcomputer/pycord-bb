@@ -14,7 +14,6 @@ class system_bb(commands.Cog):
     def __init__(self, bot):
         print_log(f"Loading system_bb (COG:{VERSION})", Fore.BLUE, logging.INFO)
         self.bot = bot
-        self.storage = Ez_Storage("./storage/data.ezs")
 
     @slash_command(description="Check if Bot is alive")
     @default_permissions(administrator=True)
