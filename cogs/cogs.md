@@ -1,1 +1,0 @@
-Place your Cogs into this Folder to load on startup.
