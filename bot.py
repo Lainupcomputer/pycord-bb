@@ -1,43 +1,77 @@
-import discord
-from discord.ext import commands
-from discord.commands import slash_command
-from discord import default_permissions
 import os
+import sys
 import logging
-from ez_storage.ez_storage import Ez_Storage
+import discord
+from discord import default_permissions
+from discord.ext import commands
 from colorama import Fore
-from internal.cmd_tools import print_log
-from internal.timing import get_time_sys
-from internal.file_system import check_create_dir
+from ez_storage.ez_storage import Ez_Storage
+from internal import get_time_sys, check_create_dir, console_log, check_version
 
 
-BOT_STORAGE = "./storage/data.ezs"
+VERSION = "1.1.0.0"
 
 
-intents = discord.Intents.all()
-bot = commands.Bot(intents=intents,
-                   command_prefix=Ez_Storage(BOT_STORAGE).get_storage(mode="o", obj="bot", data="bot_prefix"))
+def build_bot(s) -> discord.Bot:
+    """
+    Builds a basic pycord-bb bot
+    :param s: storage file: EzStorage
+    :return: discord.Bot
+    """
+    intents = discord.Intents.all()
+    bbot = commands.Bot(intents=intents, command_prefix=s.get_storage(mode="o", obj="bot", data="bot_prefix"))
 
+    @bbot.event
+    async def on_ready():
+        console_log("Bot Online!", Fore.GREEN, logging.INFO)
+        if bot.auto_sync_commands:
+            await bot.sync_commands()
+            console_log("Commands synced!", Fore.GREEN, logging.INFO)
 
-@bot.event
-async def on_ready():
-    print_log("Bot Online!", Fore.GREEN, logging.INFO)
-    if bot.auto_sync_commands:
-        await bot.sync_commands()
-        print_log("Commands synced!", Fore.GREEN, logging.INFO)
+    @bbot.event
+    async def on_connect():
+        console_log("Bot connected", Fore.YELLOW, logging.INFO)
 
+    @bbot.slash_command(description="Check if Bot is alive")
+    @default_permissions(administrator=True)
+    async def alive_check(ctx: discord.commands.context.ApplicationContext):
+        await ctx.send_response("Alive!", ephemeral=True)
+        console_log(f"{ctx.user.mention} performed 'alive_check'", Fore.YELLOW, logging.INFO)
 
-@bot.event
-async def on_connect():
-    print_log("Bot connected", Fore.YELLOW, logging.INFO)
+    return bbot
 
 
 if __name__ == "__main__":
-    check_create_dir("./Logs")
-    logging.basicConfig(filename=f"Logs/{get_time_sys()}.log", level=logging.DEBUG,
+    """
+    Create needed directory's, skip if found 
+    /logs
+    /storage
+    -
+    Setup logger configuration
+    -
+    Check for Updates
+    -
+    Load Extensions 
+    -
+    Try to start the bot
+    """
+    check_create_dir("./logs"), check_create_dir("./storage")
+    logging.basicConfig(filename=f"logs/{get_time_sys()}.log", level=logging.INFO,
                         format="%(asctime)s %(message)s")
-    print_log("Starting Discord Bot ...\nLoading Cogs ...", Fore.YELLOW, logging.INFO)
-    for file in os.listdir("cogs"):
+    _s = Ez_Storage("./storage/data.ezs")
+    _s.enable_debug = True
+    _s.storage_prefix = "bot"
+    bot = build_bot(_s)
+    console_log(check_version("bot", VERSION), Fore.YELLOW, logging.INFO)
+    for file in os.listdir("extensions"):
         if file.endswith(".py"):
-            bot.load_extension(f"cogs.{file[:-3]}")
-    bot.run(Ez_Storage(BOT_STORAGE).get_storage(mode="o", obj="bot", data="bot_token"))
+            bot.load_extension(f"extensions.{file[:-3]}")
+    try:
+
+        bot.run(_s.get_storage(mode="o", obj="bot", data="bot_token"))
+    except discord.errors.LoginFailure:
+        console_log("Improper token has been passed. (Login Failure)", Fore.RED, logging.ERROR)
+        sys.exit()
+    except TypeError:
+        console_log("Improper token has been passed. (check if token is set)", Fore.RED, logging.ERROR)
+        sys.exit()
