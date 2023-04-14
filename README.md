@@ -3,8 +3,10 @@ LUCS Basic Discord Bot Runtime
 
 
 # about 
-pycord-bb is a basic discord bot wit some build in functionality
+pycord-bb is a basic discord bot with some build in functionality
+
 there is also a logger configured 
+
 filesystem access using ez-storage
 
 
