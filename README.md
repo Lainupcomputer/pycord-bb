@@ -1,14 +1,25 @@
-# pycord-bb
-LUCS Basic Discord Bot Runtime 
+## pycord-bb
+basic preconfigured discord-bot startup script  
 
+pycord-bb is meant to be used as a universal base for development and distribution of pycord cogs
 
-# about 
-pycord-bb is a basic discord bot wit some build in functionality
-there is also a logger configured 
-filesystem access using ez-storage
+pycord-bb is a basic discord bot with some build in functionality:
 
+- preconfigured logger
+- filesystem access using ez-storage
+- version check on startup
 
-# **Installation:**
+**extensions** from ```./extensions/``` will be loaded on startup. [how to create extensions]()
+
+### Installation:
+_Automated Installation:_
+
+autoinstaller scripts assuming you have Python > 3.9.x and Git installed
+
+download the autoinstaller [here]()
+
+_Manual Installation:_
+
 - Install Python > 3.9.x 
 - create a Folder and move in 
 - Download repository :  https://github.com/Lainupcomputer/pycord-bb
@@ -27,10 +38,10 @@ _Docker Installation:_
 - ```docker build -t mybot .```
 - ```docker run mybot ```
 
-# Support
-- if you need support please join our [Discord](https://discord.gg/aYD4sewxyb)
 
 
-# other
-- any [Issue](https://github.com/Lainupcomputer/pycord-bb/issues/new)
+### Support:
+if you need support please join our [Discord](https://discord.gg/aYD4sewxyb)
+
+submit a Bug [Here](https://github.com/Lainupcomputer/pycord-bb/issues/new)
  
