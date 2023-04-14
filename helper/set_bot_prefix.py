@@ -12,7 +12,7 @@ def set_bot_prefix(prefix: str):
 
 
 if __name__ == "__main__":
-    # This Helper Script will set the bot_token for pycord-bb instance
+    # This Helper Script will set the bot_prefix for pycord-bb instance
     print_clr("pycord-bb helper: bot_prefix", Fore.BLUE)
     if len(sys.argv) > 1:
         set_bot_prefix(sys.argv[1])
