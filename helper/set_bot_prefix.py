@@ -1,4 +1,4 @@
-from ez_storage.ez_storage import Ez_Storage
+from development import Storage
 from colorama import Fore
 import sys
 
@@ -8,8 +8,7 @@ def print_clr(content: str, color):
 
 
 def set_bot_prefix(prefix: str):
-    Ez_Storage("../storage/data.ezs").add_storage(mode="o", obj="bot", data="bot_prefix",
-                                                  value=prefix, override=True)
+    Storage(dir="../storage/", path="data.ezs").add("bot_prefix", prefix, overwrite=True)
 
 
 if __name__ == "__main__":
