@@ -21,7 +21,7 @@ def build_bot(s) -> discord.Bot:
     :return: discord.Bot
     """
     intents = discord.Intents.all()
-    bbot = commands.Bot(intents=intents, command_prefix=s.get("bot_prefix", within="bot"))
+    bbot = commands.Bot(intents=intents, command_prefix=s.get("bot_prefix"))
 
     @bbot.event
     async def on_ready():
@@ -69,7 +69,7 @@ if __name__ == "__main__":
             bot.load_extension(f"extensions.{file[:-3]}")
     try:
 
-        bot.run(_s.get("bot_token", within="bot"))
+        bot.run(_s.get("bot_token"))
     except discord.errors.LoginFailure:
         console_log("Improper token has been passed. (Login Failure)", Fore.RED, logging.ERROR)
         sys.exit()
