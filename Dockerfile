@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Download repository
 RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/Lainupcomputer/pycord-bb
+RUN git clone -b cot https://github.com/Lainupcomputer/pycord-bb
 
 # Create a virtual environment
 RUN python -m venv venv
