@@ -140,10 +140,7 @@ class Ez_Dict(Ez_Data):
                 res = base.get(entity)
         else:
             res = self.data.get(entity)
-        if res is None:
-            raise Storage_Item_Error
-        else:
-            return res
+        return res
 
     def add(self, entity: str, value: (int, str, dict, tuple), **kwargs):
         if not self._check_compatibility():
