@@ -14,8 +14,11 @@ def set_bot_token(token: str):
 if __name__ == "__main__":
     # This Helper Script will set the bot_token for pycord-bb instance
     print_clr("pycord-bb helper: bot_token", Fore.BLUE)
-    print_clr("enter bot_token:", Fore.YELLOW)
-    set_bot_token(input())
+    if len(sys.argv) > 1:
+        set_bot_token(sys.argv[1])
+    else:
+        print_clr("enter bot_token:", Fore.YELLOW)
+        set_bot_token(input())
     print_clr("bot_token has been set", Fore.GREEN)
     print_clr("Exiting now ...", Fore.RED)
     sys.exit()
