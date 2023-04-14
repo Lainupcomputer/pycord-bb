@@ -20,6 +20,12 @@ filesystem access using ez-storage
 - set bot prefix ```cd /helper``` -> ```python set_bot_prefix.py```
 - start the bot with ```python bot.py```
 
+_Docker Installation:_
+
+- download repo 
+- add your token and prefix in ```Dockerfile```
+- ```docker build -t mybot .```
+- ```docker run mybot ```
 
 # Support
 - if you need support please join our [Discord](https://discord.gg/aYD4sewxyb)
