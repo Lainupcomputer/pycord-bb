@@ -1,0 +1,5 @@
+"""
+Author: Lainup
+Date: 2026-01-12
+Version: 1.0.0.0
+"""
